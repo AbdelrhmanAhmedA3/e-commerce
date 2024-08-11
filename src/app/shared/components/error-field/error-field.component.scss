@@ -1,0 +1,7 @@
+@use './../../../../style/abstracts/mixin' as *;
+
+
+
+.input-error{
+    @extend .input-error;
+}

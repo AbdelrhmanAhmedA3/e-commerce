@@ -1,0 +1,11 @@
+@use './style/index' as *; 
+
+/* You can add global styles to this file, and also import other style files */
+* { 
+    box-sizing: border-box; 
+ }
+body{
+    font-family: 'segoe ui light', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+

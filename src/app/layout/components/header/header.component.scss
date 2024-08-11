@@ -1,0 +1,110 @@
+@use './../../../../style/abstracts/mixin' as *;
+
+
+.figure-m-none{
+    margin: 0;
+}
+
+.layout{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.523);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 15px 60px;
+    .figure-logo{
+       @include layout(5px);
+        @extend .figure-m-none;
+        .logo{
+            width: 32px;
+            height: 32px;
+        }
+        .figcaption{
+            font-weight: 600;
+        }
+    }
+    .group-right-side{
+        @include layout(10px);
+        flex-wrap: wrap;
+        justify-content: space-between;
+        flex-grow: 1;
+        .un-o-l{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            .link{
+                @include btn-link();
+            }
+        }
+        .btn-login{
+            position: relative;
+            cursor: pointer;
+            background: transparent;
+            outline: unset;
+            border: none;
+           @include btn-link();
+           padding-top: 9px;
+        }
+        .group-search-cart-account{
+            flex-wrap: wrap;
+            @include layout(15px);
+            .search{
+                width: 350px;
+                padding: 8px 10px 3px;
+                border: 1px solid rgba(66, 66, 66, 1);
+                border-radius: 8px;
+            @include layout(5px);
+            .figure-search{
+            @extend .figure-m-none;
+            }
+                .input-search{
+                    width: 100%;
+                    font-size: 17px;
+                    letter-spacing: 1px;
+                    border: unset;
+                    outline: unset;
+                    &::placeholder{
+                    transition: .3s;
+                    opacity: 1;
+                    }
+                    &:focus::placeholder{
+                    opacity: 0;
+                    }
+                }
+    
+            }
+            .cart{
+                .figure-cart{
+                    @extend .figure-m-none;
+                    position: relative;
+                  .badge{
+                    position: absolute;
+                    width: 25px;
+                    height: 24px;
+                    font-size: 12px;
+                    left: 47%;
+                    border: 3px solid white;
+                    bottom: 65%;
+                    background-color: rgb(65, 204, 204);
+                    border-radius: 50%;
+                   @include layout(0);
+                    justify-content: center;
+     
+                  }
+                }
+                .btn-basic{
+                    padding: 0;
+                    background-color: transparent;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+        }
+}
+
+
+@media only screen and (max-width: 428px) {
+     .search{
+        width: 100% !important;
+    }
+}

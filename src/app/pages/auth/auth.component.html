@@ -1,0 +1,42 @@
+@if (loading) {
+<app-loading-spinner></app-loading-spinner>
+}
+<section class="container">
+    <article>
+        <figure class="figure">
+            <img class="img" src="assets/Images/Logomark.png" alt="LOGO">
+            <figcaption>
+                <h1 class="title">
+                    Log in to your account
+                </h1>
+                <p class="paragraph">
+                    Welcome back! Please enter your details.
+                </p>
+            </figcaption>
+        </figure>
+        <form class="form" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+            <label for="username">username</label>
+            <input formControlName="username" class="input" type="email" id="username" placeholder="Enter Your Email">
+            <app-error-field [control]="authForm.controls['username']"
+                [errorMessages]="validationMessages.email"></app-error-field>
+            <label for="password">Password</label>
+            <input formControlName="password" class="input" type="password" id="password"
+                placeholder="Enter Your Password">
+            <app-error-field [errorMessages]="validationMessages.password"
+                [control]="authForm.controls['password']"></app-error-field>
+
+            @if (errorMessage) {
+            <span class="input-error">
+                {{errorMessage}}
+            </span>
+            }
+
+            <button class="btn" type="submit">Sign In
+
+
+            </button>
+
+        </form>
+    </article>
+
+</section>

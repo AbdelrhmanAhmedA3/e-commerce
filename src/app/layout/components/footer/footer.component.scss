@@ -1,0 +1,26 @@
+@use './../../../../style/abstracts/mixin' as *;
+
+
+.logo{
+    bottom: 0;
+    left: 0;
+    @include layout(0);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 48px 60px;
+    background-color: rgba(29, 41, 57, 1);
+    .figure-logo{
+        margin: 0;
+    @include layout(5px);
+    .img-logo{
+        width: 32px;
+        height: 32px;
+    }
+    .figcaption{
+        color: white;
+    }
+    }
+    .copy-right{
+        color: rgba(152, 162, 179, 1);
+    }
+}

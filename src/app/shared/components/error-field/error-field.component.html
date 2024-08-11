@@ -1,0 +1,5 @@
+@if(control.errors &&(control.touched|| formDirective.submitted)){
+<span class="input-error">
+    {{errorMessages | validation: control.errors}}
+</span>
+}
