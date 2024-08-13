@@ -8,6 +8,7 @@ import { CategoryFilterComponent } from './components/category-filter/category-f
 import { AddToCartService } from 'core/services/add-to-cart/add-to-cart.service';
 import { LoadingSpinnerComponent } from 'shared/components/loading-spinner/loading-spinner.component';
 import { LoadingSpinerService } from 'core/services/loading-spiner/loading-spiner.service';
+import { ProductCategory } from 'core/services/models/ProductCategory/product-category';
 @Component({
   selector: 'app-products',
   standalone: true,
@@ -46,7 +47,7 @@ export class ProductsComponent implements OnInit {
             }), finalize(() => this.loadingSpiner.stop()))
       }))
   }
-  onGetCategory(category: string) {
+  onGetCategory(category: ProductCategory | string) {
 
     const skip = (this.currentPage - 1) * this.limit;
 
@@ -70,12 +71,8 @@ export class ProductsComponent implements OnInit {
             }), finalize(() => this.loadingSpiner.stop()))
       })
     )
-
-
-    // console.log(category);
-
-
   }
+
   onPageChange(page: number) {
     this.currentPage = page;
     this.fetchProducts(page);

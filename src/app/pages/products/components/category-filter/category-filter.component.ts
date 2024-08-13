@@ -1,9 +1,8 @@
 import { NgFor } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormGroup, FormBuilder, ReactiveFormsModule, FormControl } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryListService } from 'core/services/API/category-list/category-list.service';
-import { ProductsService } from 'core/services/API/products/products.service';
-import { reduce } from 'rxjs';
+import { ProductCategory } from 'core/services/models/ProductCategory/product-category';
 
 @Component({
   selector: 'app-category-filter',
@@ -13,8 +12,8 @@ import { reduce } from 'rxjs';
   styleUrl: './category-filter.component.scss'
 })
 export class CategoryFilterComponent implements OnInit {
-  categories: string[] = [];
-  @Output() onCategoryChange = new EventEmitter<string>()
+  categories: ProductCategory[] = [];
+  @Output() onCategoryChange = new EventEmitter<ProductCategory | string>()
   constructor(private categoryService: CategoryListService) { }
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AuthRequest, AuthResponse } from 'core/services/models/AuthRequest/auth-request';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -14,14 +15,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
 
-  auth(username: string, password: string, expiresInMins: number): Observable<any> {
-    const body = {
+  auth(username: string, password: string, expiresInMins: number): Observable<AuthResponse> {
+    const body: AuthRequest = {
       username,
       password,
       expiresInMins
     };
 
 
-    return this.http.post<any>(this.apiUrl, body)
+    return this.http.post<AuthResponse>(this.apiUrl, body)
   }
 }

@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'core/services/API/auth/auth.service';
 import { LoadingSpinerService } from 'core/services/loading-spiner/loading-spiner.service';
+import { authForm } from 'core/services/models/authForm/authForm.type';
 import { ErrorFieldComponent } from 'shared/components/error-field/error-field.component';
 import { LoadingSpinnerComponent } from 'shared/components/loading-spinner/loading-spinner.component';
 
@@ -35,7 +36,7 @@ export class AuthComponent implements OnInit {
     }
   }
 
-  authForm: any = this.fb.nonNullable.group({
+  authForm: authForm = this.fb.nonNullable.group({
     username: ['emilys', [Validators.required,]],
     password: ['emilyspass', [Validators.required]],
   })
@@ -49,7 +50,7 @@ export class AuthComponent implements OnInit {
       this.authForm.markAllAsTouched()
       return
     }
-    this.auth.auth(this.authForm.value.username, this.authForm.value.password, 30).subscribe({
+    this.auth.auth(this.authForm.controls.username.value, this.authForm.controls.password.value, 30).subscribe({
       next: (response) => {
         localStorage.setItem('authToken', response.token)
         this.router.navigate(['products']);
