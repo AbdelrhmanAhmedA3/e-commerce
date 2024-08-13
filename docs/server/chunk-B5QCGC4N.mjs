@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{L as o,f as i}from"./chunk-SBNCQXMG.mjs";var s=(()=>{let t=class t{constructor(){this.searchTerm$=new i("")}};t.\u0275fac=function(e){return new(e||t)},t.\u0275prov=o({token:t,factory:t.\u0275fac,providedIn:"root"});let r=t;return r})();var m=(()=>{let t=class t{constructor(){this.totalNumber=0}increment(){this.totalNumber++}};t.\u0275fac=function(e){return new(e||t)},t.\u0275prov=o({token:t,factory:t.\u0275fac,providedIn:"root"});let r=t;return r})();export{s as a,m as b};

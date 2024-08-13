@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{L as e,Q as s,Sb as a,f as n}from"./chunk-SBNCQXMG.mjs";var f=(()=>{let t=class t{constructor(o){this.http=o,this.token=new n(null),this.apiUrl="https://dummyjson.com/auth/login"}auth(o,r,c){let p={username:o,password:r,expiresInMins:c};return this.http.post(this.apiUrl,p)}};t.\u0275fac=function(r){return new(r||t)(s(a))},t.\u0275prov=e({token:t,factory:t.\u0275fac,providedIn:"root"});let i=t;return i})();export{f as a};
