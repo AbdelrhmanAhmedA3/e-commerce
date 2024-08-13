@@ -15,11 +15,13 @@ export const routes: Routes = [
                 path: 'login',
                 loadComponent: () => import('pages/auth/auth.component').then(c => c.AuthComponent),
 
+
             },
             {
                 path: 'products',
                 loadComponent: () => import('pages/products/products.component').then(c => c.ProductsComponent),
                 canActivate: [authGuard]
+
             },
             {
                 path: '**',

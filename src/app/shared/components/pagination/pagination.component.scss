@@ -1,0 +1,44 @@
+@use "./../../../../style/abstracts/mixin" as *;
+
+.pagination-container {
+    margin: 20px ;
+  @include layout(0);
+  justify-content: center;
+  }
+  
+  .pagination-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .pagination-numbers {
+    display: flex;
+    align-items: center;
+    margin: 0 8px;
+  }
+  
+  .pagination-numbers span {
+    display: inline-block;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0 4px;
+    background-color: #f3f3f3;
+    transition: background-color 0.3s;
+  }
+  
+  .pagination-numbers span:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .pagination-numbers .active {
+    background-color: #00bcd4;
+    color: #ffffff;
+  }
+  
+  .pagination-ellipsis {
+    padding: 8px 12px;
+  }
+  

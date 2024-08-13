@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroupDirective, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'core/services/API/auth/auth.service';
 import { ErrorFieldComponent } from 'shared/components/error-field/error-field.component';
@@ -13,7 +13,6 @@ import { LoadingSpinnerComponent } from 'shared/components/loading-spinner/loadi
   styleUrl: './auth.component.scss'
 })
 export class AuthComponent implements OnInit {
-  // @ViewChild(FormGroupDirective) formDir!: FormGroupDirective;
   loading: boolean = false;
   errorMessage: string = '';
 
@@ -48,21 +47,20 @@ export class AuthComponent implements OnInit {
     this.loading = true;
     if (!this.authForm.value) {
       this.authForm.markAllAsTouched()
-      console.log(this.authForm.value.password);
       return
     }
     this.auth.auth(this.authForm.value.username, this.authForm.value.password, 30).subscribe({
       next: (response) => {
-        console.log(response);
         localStorage.setItem('authToken', response.token)
         this.router.navigate(['products']);
+        // console.log(localStorage.getItem('authToken'));
+        this.auth.token.next(localStorage.getItem('authToken'))
       },
       error: (error) => {
         this.errorMessage = error?.error?.message || 'An error occurred during login.';
         this.loading = false;
       }
     })
-
 
 
   }

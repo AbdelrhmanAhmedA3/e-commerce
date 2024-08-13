@@ -16,7 +16,10 @@
             </ul>
 
             <section class="group-search-cart-account">
-                <!-- <button class="btn-login" type="button">Log in</button> -->
+                @if(auth.token.getValue() == null){
+                <button class="btn-login" type="button">Log in</button>
+                }
+                @if(auth.token.getValue() != null){
 
                 <article class="search">
                     <label for="search">
@@ -24,14 +27,20 @@
                             <img src="assets/Images/Shape.png" alt="shape">
                         </figure>
                     </label>
-                    <input id="search" class="input-search" type="search" placeholder="Search">
+                    <input #searchField (input)="searchService.searchTerm$.next(searchField.value)" id="search"
+                        class="input-search" type="search" placeholder="Search">
                 </article>
 
                 <article class="cart">
                     <button class="btn-basic" type="button">
                         <figure class="figure-cart">
                             <img src="assets/Images/Cart.png" alt="shape">
-                            <span class="badge">99+</span>
+                            @if(addToCart.totalNumber != 0){
+
+                            <span class="badge">
+                                {{addToCart.totalNumber}}
+                            </span>
+                            }
                         </figure>
                     </button>
                 </article>
@@ -39,6 +48,7 @@
                 <article class="">
                     <strong>Account</strong>
                 </article>
+                }
 
             </section>
 
