@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'core/services/API/auth/auth.service';
+import { LoadingSpinerService } from 'core/services/loading-spiner/loading-spiner.service';
 import { ErrorFieldComponent } from 'shared/components/error-field/error-field.component';
 import { LoadingSpinnerComponent } from 'shared/components/loading-spinner/loading-spinner.component';
 
@@ -13,10 +14,9 @@ import { LoadingSpinnerComponent } from 'shared/components/loading-spinner/loadi
   styleUrl: './auth.component.scss'
 })
 export class AuthComponent implements OnInit {
-  loading: boolean = false;
   errorMessage: string = '';
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) { }
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private loadingSpiner: LoadingSpinerService) { }
 
 
   ngOnInit(): void {
@@ -44,7 +44,7 @@ export class AuthComponent implements OnInit {
 
 
   onSubmit() {
-    this.loading = true;
+    this.loadingSpiner.start()
     if (!this.authForm.value) {
       this.authForm.markAllAsTouched()
       return
@@ -58,7 +58,8 @@ export class AuthComponent implements OnInit {
       },
       error: (error) => {
         this.errorMessage = error?.error?.message || 'An error occurred during login.';
-        this.loading = false;
+        this.loadingSpiner.stop()
+
       }
     })
 

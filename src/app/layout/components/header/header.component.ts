@@ -1,5 +1,6 @@
 import { AsyncPipe } from '@angular/common';
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, Output, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AddToCartService } from 'core/services/add-to-cart/add-to-cart.service';
 import { AuthService } from 'core/services/API/auth/auth.service';
 import { SearchService } from 'core/services/search/search.service';
@@ -7,11 +8,14 @@ import { SearchService } from 'core/services/search/search.service';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, RouterLink, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit {
+
+
+  @Output()
 
   search = signal(false)
 

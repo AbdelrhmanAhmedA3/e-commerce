@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SearchService } from 'core/services/search/search.service';
+import { LoadingSpinnerComponent } from 'shared/components/loading-spinner/loading-spinner.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, LoadingSpinnerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [SearchService]
+
 })
 export class AppComponent {
   title = 'e-commerce';
+
 }

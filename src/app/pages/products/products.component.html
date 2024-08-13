@@ -1,8 +1,8 @@
 <section class="container">
     <h1>iPhone</h1>
-    <p>Home / Products / Smart Phones / iPhone</p>
+    <p>Home / Products </p>
     <section class="layout">
-        <app-category-filter></app-category-filter>
+        <app-category-filter (onCategoryChange)="onGetCategory($event)"></app-category-filter>
         <div class="container-card">
             @for(product of products$ | async ; track product.id){
             <article class="card">

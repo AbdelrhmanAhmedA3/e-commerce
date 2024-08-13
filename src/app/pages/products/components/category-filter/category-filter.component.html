@@ -1,0 +1,16 @@
+<div class="filter">
+    <div>
+        <input id="all" (input)="onCategoryChange.emit('all')" checked type="radio" value="All" name="one">
+        <label for="all" class="title">
+            All
+        </label>
+    </div>
+    @for(category of categories ; track $index){
+    <div>
+        <input [id]="category" (input)="onCategoryChange.emit(category)" type="radio" [value]="category" name="one">
+        <label [for]="category" class="title">
+            {{ category }}
+        </label>
+    </div>
+    }
+</div>
