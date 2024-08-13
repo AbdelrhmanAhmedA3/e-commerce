@@ -62,6 +62,7 @@
             @extend .figure-m-none;
             }
                 .input-search{
+                    background-color: white;
                     width: 100%;
                     font-size: 17px;
                     letter-spacing: 1px;
@@ -108,7 +109,7 @@
 }
 
 
-@media only screen and (max-width: 428px) {
+@media only screen and (max-width: 430.9px) {
      .search{
         width: 100% !important;
     }

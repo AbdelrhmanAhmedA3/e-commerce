@@ -76,6 +76,7 @@
     }
   
     .btn-card{
+        color: #000;
         background: rgba(65, 204, 204, 1);
         padding: 15px 10px;
         width: 100%;
@@ -88,7 +89,7 @@ cursor: pointer;
     }
     }
 }
-@media screen and (max-width: 711px) {
+@media screen and (max-width: 714.9px) {
     .layout{
         flex-wrap: wrap;
     }

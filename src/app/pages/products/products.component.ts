@@ -17,13 +17,15 @@ import { ProductCategory } from 'core/services/models/ProductCategory/product-ca
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
+  searchTerm: string = '';
+  category!: ProductCategory | string;
   products$ !: Observable<any>
   totalPages: number = 0;
   currentPage: number = 1;
   limit: number = 10;
   constructor(
     private productService: ProductsService,
-    private searchS: SearchService,
+    private search: SearchService,
     public addToCart: AddToCartService,
     private loadingSpiner: LoadingSpinerService
   ) {
@@ -32,12 +34,16 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.fetchProducts(this.currentPage);
+    this.search.searchTerm$.subscribe((term) => {
+      this.searchTerm = term;
+    });
+
   }
 
   fetchProducts(page: number) {
     const skip = (page - 1) * this.limit;
     this.loadingSpiner.start()
-    this.products$ = this.searchS.searchTerm$.pipe(
+    this.products$ = this.search.searchTerm$.pipe(
       debounceTime(600),
       switchMap((searchTerm: string) => {
         return this.productService.fetchProducts(skip, this.limit, searchTerm)
@@ -48,7 +54,7 @@ export class ProductsComponent implements OnInit {
       }))
   }
   onGetCategory(category: ProductCategory | string) {
-
+    this.category = category;
     const skip = (this.currentPage - 1) * this.limit;
 
 
@@ -57,7 +63,7 @@ export class ProductsComponent implements OnInit {
       return
     }
     this.loadingSpiner.start()
-    this.products$ = this.searchS.searchTerm$.pipe(
+    this.products$ = this.search.searchTerm$.pipe(
       debounceTime(600),
       switchMap((searchTerm: string) => {
         return this.productService.fetchProductByCategory(skip, this.limit, category)

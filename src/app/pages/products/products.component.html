@@ -1,6 +1,16 @@
 <section class="container">
     <h1>iPhone</h1>
-    <p>Home / Products </p>
+    <p>Home / Products
+        @if(category){
+        {{"/ "+ category}}
+        }
+        @if (searchTerm != '') {
+        /
+        <strong>
+            {{ searchTerm}}
+        </strong>
+        }
+    </p>
     <section class="layout">
         <app-category-filter (onCategoryChange)="onGetCategory($event)"></app-category-filter>
         <div class="container-card">
